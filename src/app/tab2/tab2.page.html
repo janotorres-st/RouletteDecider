@@ -1,17 +1,69 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>🎯 ¡A Girar!</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding ion-text-center">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <div class="ion-margin-top ion-margin-bottom">
+    <small style="color: var(--ion-color-medium); text-transform: uppercase; letter-spacing: 1px;">Ruleta Activa</small>
+    <h1 style="font-weight: 700; margin-top: 4px;">🍔 ¿Qué almorzar hoy?</h1>
+  </div>
+
+  <div class="ruleta-container">
+    <div class="marcador">▼</div>
+    
+    <div class="ruleta-circulo" [style.transform]="estiloRotacion">
+      <div class="ruleta-centro"></div>
+      <span class="emoji-opcion e1">🍕</span>
+      <span class="emoji-opcion e2">🍣</span>
+      <span class="emoji-opcion e3">🥗</span>
+      <span class="emoji-opcion e4">🍔</span>
+      <span class="emoji-opcion e5">🌮</span>
+    </div>
+  </div>
+
+  <div class="ion-padding">
+    <ion-button 
+      expand="block" 
+      size="large" 
+      color="danger" 
+      class="boton-girar"
+      (click)="girarRuleta()"
+      [disabled]="estaGirando">
+      <ion-icon name="sync-outline" slot="start"></ion-icon>
+      {{ estaGirando ? 'Eligiendo...' : '¡GIRAR RULETA!' }}
+    </ion-button>
+  </div>
+
+  <div class="ion-text-left ion-margin-top">
+    <ion-list-header>
+      <ion-label style="font-weight: 600;">Opciones incluidas:</ion-label>
+    </ion-list-header>
+    
+    <ion-list lines="none">
+      <ion-item>
+        <ion-badge color="warning" slot="start">1</ion-badge>
+        <ion-label>Pizza Italiana</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-badge color="warning" slot="start">2</ion-badge>
+        <ion-label>Sushi Handroll</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-badge color="warning" slot="start">3</ion-badge>
+        <ion-label>Ensalada César</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-badge color="warning" slot="start">4</ion-badge>
+        <ion-label>Hamburguesa con Papas</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-badge color="warning" slot="start">5</ion-badge>
+        <ion-label>Tacos al Pastor</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>
