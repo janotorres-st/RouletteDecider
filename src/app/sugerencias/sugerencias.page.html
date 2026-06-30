@@ -1,13 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>sugerencias</ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sugerencias de la Comunidad</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">sugerencias</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  
+  <div *ngIf="cargando" class="ion-text-center" style="margin-top: 40px;">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Conectando con el servicio API Rest...</p>
+  </div>
+
+  <ion-list *ngIf="!cargando">
+    <ion-card *ngFor="let sugerencia of listaSugerencias">
+      <ion-card-header>
+        <ion-card-subtitle>Idea Global #{{ sugerencia.id }}</ion-card-subtitle>
+        <ion-card-title>{{ sugerencia.title }}</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        {{ sugerencia.body }}
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
 </ion-content>
